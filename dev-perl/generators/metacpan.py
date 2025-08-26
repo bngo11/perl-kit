@@ -5,7 +5,7 @@ from packaging.version import Version
 import re
 
 async def generate(hub, **pkginfo):
-	homepage = f"https://metacpan.org/pod/{pkginfo['name'].replace('-', '::')}"
+	homepage = f"https://metacpan.org/dist/{pkginfo['name']}"
 	regex = r'(\d+(?:\.\d+)+)'
 	html = await hub.pkgtools.fetch.get_page(homepage)
 	soup = BeautifulSoup(html, "html.parser").find("li", class_="version-jump").find_all("option")
